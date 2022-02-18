@@ -22,16 +22,20 @@ public class RecordsService {
     private RecordsRepository recordsRepository;
 
     public RecordsListResponseDto getAll() {
-        ArrayList<RecordResponseDto> recordsList =  (ArrayList<RecordResponseDto>) recordsRepository.findAll().stream().map(record -> modelMapper.map(record, RecordResponseDto.class)).collect(Collectors.toList());
+        ArrayList<RecordResponseDto> recordsList = (ArrayList<RecordResponseDto>) recordsRepository.findAll().stream().map(record -> modelMapper.map(record, RecordResponseDto.class)).collect(Collectors.toList());
 
         return new RecordsListResponseDto(recordsList);
     }
 
-    public RecordResponseDto getById(int id){
+    public RecordResponseDto getById(int id) {
         Record record = recordsRepository.findById(id).get();
 
         RecordResponseDto recordResponseDto = modelMapper.map(record, RecordResponseDto.class);
 
         return recordResponseDto;
+    }
+
+    public void deleteById(int id) {
+        recordsRepository.deleteById(id);
     }
 }

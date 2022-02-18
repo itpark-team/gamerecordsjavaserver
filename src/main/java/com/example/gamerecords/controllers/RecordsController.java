@@ -25,8 +25,8 @@ public class RecordsController {
         return recordsService.getById(id);
     }
 
-    /*@DeleteMapping(value = "/deleteById/{id}")
+    @DeleteMapping(value = "/deleteById/{id}")
     public void deleteById(@PathVariable int id) {
-        gunsService.deleteById(id);
-    }*/
+        recordsService.deleteById(id);
+    }
 }
