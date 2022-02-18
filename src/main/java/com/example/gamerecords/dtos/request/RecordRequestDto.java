@@ -1,10 +1,9 @@
-package com.example.gamerecords.dtos;
+package com.example.gamerecords.dtos.request;
 
 public class RecordRequestDto {
-    public int id;
     public String nickname;
     public int score;
     public String game;
     public long unixDateTime;
-    public String countryName;
+    public int countryId;
 }

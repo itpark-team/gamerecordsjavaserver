@@ -1,6 +1,7 @@
 package com.example.gamerecords.services;
 
-import com.example.gamerecords.dtos.RecordResponseDto;
+import com.example.gamerecords.dtos.response.RecordResponseDto;
+import com.example.gamerecords.dtos.response.RecordsListResponseDto;
 import com.example.gamerecords.models.Record;
 import com.example.gamerecords.repositories.RecordsRepository;
 import lombok.AllArgsConstructor;
@@ -20,8 +21,10 @@ public class RecordsService {
     @Autowired
     private RecordsRepository recordsRepository;
 
-    public ArrayList<RecordResponseDto> getAll() {
-        return (ArrayList<RecordResponseDto>) recordsRepository.findAll().stream().map(record -> modelMapper.map(record, RecordResponseDto.class)).collect(Collectors.toList());
+    public RecordsListResponseDto getAll() {
+        ArrayList<RecordResponseDto> recordsList =  (ArrayList<RecordResponseDto>) recordsRepository.findAll().stream().map(record -> modelMapper.map(record, RecordResponseDto.class)).collect(Collectors.toList());
+
+        return new RecordsListResponseDto(recordsList);
     }
 
     public RecordResponseDto getById(int id){

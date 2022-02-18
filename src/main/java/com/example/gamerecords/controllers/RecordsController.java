@@ -1,12 +1,11 @@
 package com.example.gamerecords.controllers;
 
-import com.example.gamerecords.dtos.RecordResponseDto;
+import com.example.gamerecords.dtos.response.RecordsListResponseDto;
+import com.example.gamerecords.dtos.response.RecordResponseDto;
 import com.example.gamerecords.services.RecordsService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
 
 @RestController
 @RequestMapping(path = "/records", method = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
@@ -17,7 +16,7 @@ public class RecordsController {
     private RecordsService recordsService;
 
     @GetMapping(value = "/getAll")
-    public ArrayList<RecordResponseDto> getAll() {
+    public RecordsListResponseDto getAll() {
         return recordsService.getAll();
     }
 
@@ -30,5 +29,4 @@ public class RecordsController {
     public void deleteById(@PathVariable int id) {
         gunsService.deleteById(id);
     }*/
-
 }

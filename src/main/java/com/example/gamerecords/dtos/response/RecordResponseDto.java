@@ -1,4 +1,4 @@
-package com.example.gamerecords.dtos;
+package com.example.gamerecords.dtos.response;
 
 import com.example.gamerecords.models.Country;
 import lombok.Data;
