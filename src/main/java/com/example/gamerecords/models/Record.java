@@ -26,7 +26,7 @@ public class Record {
     @Column(name = "unix_datetime")
     public long unixDateTime;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="country_id")
     public Country country;
 }
