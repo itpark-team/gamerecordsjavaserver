@@ -1,11 +1,13 @@
 package com.example.gamerecords.services;
 
+import com.example.gamerecords.dtos.request.RecordRequestDto;
 import com.example.gamerecords.dtos.response.RecordResponseDto;
 import com.example.gamerecords.dtos.response.RecordsListResponseDto;
 import com.example.gamerecords.models.Record;
 import com.example.gamerecords.repositories.RecordsRepository;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.PropertyMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -37,5 +39,11 @@ public class RecordsService {
 
     public void deleteById(int id) {
         recordsRepository.deleteById(id);
+    }
+
+    public void insertOne(RecordRequestDto recordRequestDto){
+        Record record = modelMapper.map(recordRequestDto, Record.class);
+
+        recordsRepository.saveAndFlush(record);
     }
 }

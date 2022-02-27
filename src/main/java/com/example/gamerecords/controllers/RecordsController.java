@@ -1,5 +1,6 @@
 package com.example.gamerecords.controllers;
 
+import com.example.gamerecords.dtos.request.RecordRequestDto;
 import com.example.gamerecords.dtos.response.RecordsListResponseDto;
 import com.example.gamerecords.dtos.response.RecordResponseDto;
 import com.example.gamerecords.services.RecordsService;
@@ -28,5 +29,10 @@ public class RecordsController {
     @DeleteMapping(value = "/deleteById/{id}")
     public void deleteById(@PathVariable int id) {
         recordsService.deleteById(id);
+    }
+
+    @PostMapping(value = "/insertOne")
+    public void insertOne(@RequestBody RecordRequestDto recordRequestDto) {
+        recordsService.insertOne(recordRequestDto);
     }
 }
