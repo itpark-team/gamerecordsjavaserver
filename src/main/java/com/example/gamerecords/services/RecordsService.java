@@ -46,4 +46,12 @@ public class RecordsService {
 
         recordsRepository.saveAndFlush(record);
     }
+
+    public void updateById(int id, RecordRequestDto recordRequestDto){
+
+        Record record = modelMapper.map(recordRequestDto, Record.class);
+        record.id = id;
+
+        recordsRepository.save(record);
+    }
 }

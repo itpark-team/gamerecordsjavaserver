@@ -35,4 +35,9 @@ public class RecordsController {
     public void insertOne(@RequestBody RecordRequestDto recordRequestDto) {
         recordsService.insertOne(recordRequestDto);
     }
+
+    @PutMapping(value = "/updateById/{id}")
+    public void updateById(@PathVariable int id, @RequestBody RecordRequestDto recordRequestDto) {
+        recordsService.updateById(id, recordRequestDto);
+    }
 }
